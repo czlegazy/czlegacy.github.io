@@ -16,6 +16,10 @@
       padding: 60px 20px;
       text-align: center;
     }
+    header img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
     header h1 {
       font-size: 3.5em;
       margin: 0;
@@ -59,6 +63,15 @@
     .links a:hover {
       background-color: #b8860b;
     }
+    .identity-img {
+      max-width: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    .logo-img {
+      max-width: 200px;
+      margin-top: 20px;
+    }
     footer {
       background-color: #111;
       padding: 30px 20px;
@@ -71,6 +84,7 @@
 <body>
 
   <header>
+    <img src="czl-logo.png" alt="CZLEGACY Logo" class="logo-img">
     <h1>CZLEGACY</h1>
     <h2>Gold 3.0 — $CZL</h2>
   </header>
@@ -86,14 +100,22 @@
   </section>
 
   <section>
+    <h3>Identity</h3>
+    <img src="czl-founder.png" alt="Founder CZLEGACY" class="identity-img">
+    <p>
+      CZLEGACY is not just a brand — it's a persona. A tactical force. A visual rebellion. This is the face of Gold 3.0.
+    </p>
+  </section>
+
+  <section>
     <h3>Project Resources</h3>
     <div class="links">
-      <a href="https://t.me/czlegacy" target="_blank">Telegram</a>
-      <a href="https://x.com/czlegacy" target="_blank">X (Twitter)</a>
-      <a href="https://linkedin.com/company/czlegacy" target="_blank">LinkedIn</a>
+      <a href="https://t.me/CZLEGAXY" target="_blank">Telegram</a>
+      <a href="https://x.com/CZLEGACYCZL" target="_blank">X (Twitter)</a>
+      <a href="https://www.linkedin.com/in/czlgalaxy-czl-b39661387" target="_blank">LinkedIn</a>
       <a href="https://czlegacy.github.io/roadmap" target="_blank">Roadmap</a>
-      <a href="https://czlegacy.github.io/litepaper" target="_blank">Litepaper</a>
-      <a href="https://github.com/czlegazy/czlegacy.github.io" target="_blank">GitHub</a>
+      <a href="https://medium.com/@saturnyx80/czlgalaxy-b34576f0b0c9" target="_blank">Litepaper</a>
+      <a href="https://github.com/czlegacy/czlegacy.github.io" target="_blank">GitHub</a>
     </div>
   </section>
 
