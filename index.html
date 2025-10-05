@@ -8,17 +8,21 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #000, #111);
+      background: linear-gradient(to bottom, #000, #111);
       color: #f5f5f5;
+      overflow-x: hidden;
     }
     header {
+      position: relative;
       background: linear-gradient(to right, #d4af37, #b8860b);
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
+      overflow: hidden;
     }
-    header img {
+    header img.logo-img {
       max-width: 180px;
       margin-bottom: 20px;
+      animation: glow 2s infinite alternate;
     }
     header h1 {
       font-size: 3.5em;
@@ -29,6 +33,26 @@
       font-size: 1.5em;
       margin-top: 10px;
       color: #222;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px gold); }
+      to { filter: drop-shadow(0 0 20px #fff700); }
+    }
+    .gold-bar {
+      position: absolute;
+      width: 60px;
+      height: 20px;
+      background: gold;
+      border-radius: 4px;
+      animation: floatGold 6s infinite linear;
+    }
+    .gold-bar:nth-child(1) { top: 20px; left: 10%; animation-delay: 0s; }
+    .gold-bar:nth-child(2) { top: 60px; left: 80%; animation-delay: 2s; }
+    .gold-bar:nth-child(3) { top: 100px; left: 50%; animation-delay: 4s; }
+    @keyframes floatGold {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      50% { transform: translateY(-30px) rotate(15deg); opacity: 0.8; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 1; }
     }
     section {
       padding: 60px 20px;
@@ -43,6 +67,11 @@
     section p {
       font-size: 1.2em;
       line-height: 1.6em;
+    }
+    .identity-img {
+      max-width: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
     }
     .links {
       display: flex;
@@ -63,14 +92,10 @@
     .links a:hover {
       background-color: #b8860b;
     }
-    .identity-img {
-      max-width: 300px;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-    .logo-img {
-      max-width: 200px;
-      margin-top: 20px;
+    .chart {
+      width: 100%;
+      height: 200px;
+      margin-top: 40px;
     }
     footer {
       background-color: #111;
@@ -84,6 +109,9 @@
 <body>
 
   <header>
+    <div class="gold-bar"></div>
+    <div class="gold-bar"></div>
+    <div class="gold-bar"></div>
     <img src="czl-logo.png" alt="CZLEGACY Logo" class="logo-img">
     <h1>CZLEGACY</h1>
     <h2>Gold 3.0 — $CZL</h2>
@@ -108,12 +136,27 @@
   </section>
 
   <section>
+    <h3>Live Token Momentum</h3>
+    <svg class="chart" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polyline fill="none" stroke="gold" stroke-width="2"
+        points="0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5">
+        <animate attributeName="points" dur="4s" repeatCount="indefinite"
+          values="0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5;
+                  0,85 10,75 20,65 30,55 40,45 50,35 60,25 70,15 80,10 90,5 100,0;
+                  0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5"/>
+      </polyline>
+    </svg>
+    <p>
+      $CZL is not just a token — it's a signal. A pulse. A rising force. This chart reflects the unstoppable momentum of meme-backed finance.
+    </p>
+  </section>
+
+  <section>
     <h3>Project Resources</h3>
     <div class="links">
       <a href="https://t.me/CZLEGAXY" target="_blank">Telegram</a>
       <a href="https://x.com/CZLEGACYCZL" target="_blank">X (Twitter)</a>
       <a href="https://www.linkedin.com/in/czlgalaxy-czl-b39661387" target="_blank">LinkedIn</a>
-      <a href="https://czlegacy.github.io/roadmap" target="_blank">Roadmap</a>
       <a href="https://medium.com/@saturnyx80/czlgalaxy-b34576f0b0c9" target="_blank">Litepaper</a>
       <a href="https://github.com/czlegacy/czlegacy.github.io" target="_blank">GitHub</a>
     </div>
