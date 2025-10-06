@@ -1,42 +1,48 @@
+<!-- CZLEGACY | Institutional Swap -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CZLEGACY | Gold 3.0</title>
+  <title>CZLEGACY | Institutional Swap</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle at top left, #000000, #0a0a0a);
+      background: linear-gradient(135deg, #000000, #0a0a0a);
       color: #e0e0e0;
-      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
-    .card {
-      background: #111;
-      border: 1px solid #222;
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 32px;
-      margin: 40px auto;
-      max-width: 960px;
       box-shadow: 0 0 20px rgba(0, 255, 159, 0.1);
+      backdrop-filter: blur(12px);
       transition: box-shadow 0.3s ease;
     }
-    .card:hover {
+    .glass:hover {
       box-shadow: 0 0 30px rgba(0, 255, 159, 0.2);
     }
-    h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      color: #19fb9b;
+    h1 {
+      font-size: 2.5em;
       font-weight: 600;
+      color: #19fb9b;
+      text-align: center;
+      margin-bottom: 20px;
     }
-    ul li {
-      margin-bottom: 12px;
-      font-size: 1.05em;
+    .label {
+      margin-top: 20px;
+      font-weight: 500;
       color: #ccc;
     }
-    .token-select {
+    .select, .input {
       background-color: #1a1a1a;
       color: #19fb9b;
       border: 1px solid #9945ff;
@@ -44,8 +50,9 @@
       border-radius: 10px;
       width: 100%;
       font-size: 1em;
+      margin-top: 8px;
     }
-    .swap-button {
+    .button {
       background: linear-gradient(90deg, #9945ff, #00ff9f);
       color: #000;
       font-weight: 600;
@@ -56,7 +63,7 @@
       font-size: 1.1em;
       transition: transform 0.2s ease;
     }
-    .swap-button:hover {
+    .button:hover {
       transform: scale(1.03);
     }
     #result {
@@ -66,13 +73,25 @@
       font-weight: bold;
       white-space: pre-line;
     }
+    .connect {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #1a1a1a;
+      border: 1px solid #19fb9b;
+      color: #19fb9b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
     footer {
-      background-color: #0a0a0a;
-      color: #888;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
+      color: #888;
       border-top: 1px solid #222;
+      margin-top: 40px;
     }
     a {
       color: #00ff9f;
@@ -81,92 +100,57 @@
     a:hover {
       text-decoration: underline;
     }
+    .links {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .links a {
+      display: block;
+      margin: 8px 0;
+      font-size: 1em;
+    }
   </style>
 </head>
 <body>
 
-  <header class="text-center py-10">
-    <img src="URL_DEL_LOGO_DORADO" alt="CZLEGACY Logo" class="mx-auto w-40 mb-4" />
-    <h1 class="text-4xl font-bold text-[#19fb9b]">CZLEGACY | Gold 3.0</h1>
-    <p class="text-gray-400 mt-2">Institutional DeFi Ecosystem on Solana</p>
-  </header>
+  <button class="connect">Connect Wallet</button>
 
-  <section id="ecosystem" class="card">
-    <h2>🌐 CZLEGACY Ecosystem</h2>
-    <ul>
-      <li>🔁 Swap Protocol – Fast, secure, decentralized trading powered by Solana</li>
-      <li>💸 Lending Platform – Unlock liquidity without selling your assets</li>
-      <li>🎮 Gaming Module – Activate crypto culture through play-to-earn and viral mechanics</li>
-    </ul>
-  </section>
+  <div class="container">
+    <h1>CZLEGACY | Institutional Swap</h1>
 
-  <section id="tokenomics" class="card">
-    <h2>🪙 $CZL Tokenomics</h2>
-    <ul>
-      <li>🔥 Deflationary design through real burn mechanics</li>
-      <li>🎁 Reward system for holders and active participants</li>
-      <li>🗳️ Governance access and exclusive platform benefits</li>
-      <li>🔄 Utility across swap, lending, and gaming modules</li>
-    </ul>
-  </section>
+    <div class="glass">
+      <p>Simulate swaps between major tokens and $CZL. No wallet required.</p>
 
-  <section id="roadmap" class="card">
-    <h2>🗺️ Roadmap</h2>
-    <ul>
-      <li>✅ Token Launch</li>
-      <li>🔄 Swap Development</li>
-      <li>🧠 Lending Logic Integration</li>
-      <li>🎮 Game Module Activation</li>
-      <li>🌐 Full dApp Deployment</li>
-    </ul>
-  </section>
+      <div class="label">From Token:</div>
+      <select id="fromToken" class="select">
+        <option value="USDC">USDC</option>
+        <option value="SOL">SOL</option>
+        <option value="CZL">$CZL</option>
+      </select>
 
-  <section id="czl-simulator" class="card">
-    <h2>💱 CZLEGACY Swap Simulator</h2>
-    <p>Simulate swaps between major tokens and $CZL. No wallet required.</p>
-
-    <div style="margin-top:20px;">
-      <label>From Token:</label><br />
-      <select id="fromToken" class="token-select">
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="BNB">BNB</option>
+      <div class="label">To Token:</div>
+      <select id="toToken" class="select">
         <option value="SOL">SOL</option>
         <option value="USDC">USDC</option>
         <option value="CZL">$CZL</option>
       </select>
+
+      <div class="label">Amount:</div>
+      <input type="number" id="amount" placeholder="Enter amount" class="input" />
+
+      <button onclick="simulateSwap()" class="button">Simulate Swap</button>
+
+      <div id="result"></div>
     </div>
 
-    <div style="margin-top:20px;">
-      <label>To Token:</label><br />
-      <select id="toToken" class="token-select">
-        <option value="CZL">$CZL</option>
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="BNB">BNB</option>
-        <option value="SOL">SOL</option>
-        <option value="USDC">USDC</option>
-      </select>
+    <div class="links">
+      <h2 style="color:#9945ff; margin-top:40px;">🌐 Project Links</h2>
+      <a href="https://t.me/CZLEGAXY" target="_blank">📢 Telegram Community</a>
+      <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">📰 Manifesto on Medium</a>
+      <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">💰 Buy $CZL on Pump.fun</a>
+      <a href="https://jup.ag/swap?sell=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&buy=So11111111111111111111111111111111111111112" target="_blank">🔄 Swap USDC for SOL on Jupiter</a>
     </div>
-
-    <div style="margin-top:20px;">
-      <label>Amount:</label><br />
-      <input type="number" id="amount" placeholder="Enter amount" class="token-select" />
-    </div>
-
-    <button onclick="simulateSwap()" class="swap-button">Simulate Swap</button>
-
-    <div id="result"></div>
-  </section>
-
-  <section id="community" class="card">
-    <h2>🤝 Join the Community</h2>
-    <ul>
-      <li>📢 Telegram: <a href="https://t.me/CZLEGAXY" target="_blank">https://t.me/CZLEGAXY</a></li>
-      <li>📰 Manifesto: <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read on Medium</a></li>
-      <li>💰 Buy $CZL: <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Pump.fun</a></li>
-    </ul>
-  </section>
+  </div>
 
   <footer>
     © 2025 CZLEGACY. Built on Solana. This simulator is for demonstration purposes only.
@@ -174,12 +158,9 @@
 
   <script>
     const prices = {
-      BTC: 27000,
-      ETH: 1800,
-      BNB: 220,
-      SOL: 24,
-      USDC: 1,
-      CZL: 0.000000727
+      USDC: 0.9996,
+      SOL: 233.23,
+      CZL: 0.00000707 // Ajustado para que 33M CZL ≈ 1 SOL
     };
 
     function simulateSwap() {
@@ -205,4 +186,11 @@
 
       resultDiv.textContent = `${amount.toLocaleString()} ${from} ≈ ${formatted} ${to}`;
 
-      if (from === 'CZL' && to === 'SOL' && Math.abs(amount
+      if (from === 'CZL' && to === 'SOL' && Math.abs(amount - 33000000) < 100000) {
+        resultDiv.textContent += '\n🎯 Simulación perfecta: 33M CZL ≈ 1 SOL';
+      }
+    }
+  </script>
+
+</body>
+</html>
