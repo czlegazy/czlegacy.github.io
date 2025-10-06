@@ -3,200 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CZLEGACY | Gold 3.0</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #f5e8c7, #d4af37);
-      color: #1a1a1a;
-    }
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #1a1a1a;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 15px;
-      font-size: 1.1em;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .cta {
-      text-align: center;
-      padding: 40px;
-      background: #d4af37;
-      color: white;
-      font-weight: bold;
-    }
-    .cta a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
-    }
-    footer {
-      background-color: #1a1a1a;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-    .dapp-button {
-      display: inline-block;
-      padding: 14px 28px;
-      background: #d4af37;
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
-      text-decoration: none;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    .logo {
-      max-width: 200px;
-      margin: 20px auto;
-      display: block;
-    }
-    #wallet-status, #czl-balance, #swap-simulation {
-      font-size: 1.1em;
-      margin: 10px 0;
-    }
-  </style>
+  <title>CZLEGACY Swap dApp</title>
+  <script type="module">
+    import {
+      Connection,
+      PublicKey,
+      clusterApiUrl
+    } from 'https://cdn.skypack.dev/@solana/web3.js';
+
+    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+    const CZL_MINT = new PublicKey('YourDevnetMintAddressHere'); // ← Reemplaza con tu mint en devnet
+
+    window.connectWallet = async () => {
+      if (!window.solana || !window.solana.isPhantom) {
+        alert('Phantom wallet not found');
+        return;
+      }
+
+      try {
+        const resp = await window.solana.connect();
+        const wallet = resp.publicKey.toString();
+        document.getElementById('wallet-address').textContent = wallet;
+
+        const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
+          resp.publicKey,
+          { mint: CZL_MINT }
+        );
+
+        let balance = 0;
+        if (tokenAccounts.value.length > 0) {
+          balance = tokenAccounts.value[0].account.data.parsed.info.tokenAmount.uiAmount;
+        }
+
+        document.getElementById('czl-balance').textContent = balance.toFixed(2);
+      } catch (err) {
+        console.error(err);
+        alert('Wallet connection failed');
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-black via-gray-900 to-yellow-900 text-white font-sans min-h-screen">
 
-  <header>
-    <nav>
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="#tokenomics">Tokenomics</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#invest">Why Invest</a>
-      <a href="#solana">Built on Solana</a>
-      <a href="#burn">Burn & Rewards</a>
-      <a href="#gaming">Gaming Culture</a>
-      <a href="#czl-dapp">CZLEGACY dApp</a>
-      <a href="#community">Community</a>
-    </nav>
-  </header>
+  <div class="max-w-3xl mx-auto py-12 px-6">
+    <div class="text-center mb-10">
+      <img src="URL_DEL_LOGO_DORADO" alt="CZLEGACY Logo" class="mx-auto w-48 mb-4" />
+      <h1 class="text-4xl font-bold text-yellow-400">CZLEGACY Swap dApp</h1>
+      <p class="text-gray-300 mt-2">Gold 3.0 | Built on Solana Devnet</p>
+    </div>
 
-  <section id="ecosystem" class="card">
-    <h2>CZLEGACY Ecosystem</h2>
-    <ul>
-      <li>🔁 Swap Protocol – Fast, secure, decentralized trading powered by Solana</li>
-      <li>💸 Lending Platform – Unlock liquidity without selling your assets</li>
-      <li>🎮 Gaming Module – Activate crypto culture through play-to-earn and viral mechanics</li>
-    </ul>
-  </section>
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+      <div class="mb-4">
+        <button onclick="connectWallet()" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded w-full">
+          Connect Phantom Wallet
+        </button>
+      </div>
 
-  <section id="tokenomics" class="card">
-    <h2>$CZL Tokenomics</h2>
-    <ul>
-      <li>🪙 Deflationary design through real burn mechanics</li>
-      <li>🎁 Reward system for holders and active participants</li>
-      <li>🗳️ Governance access and exclusive platform benefits</li>
-      <li>🔄 Utility across swap, lending, and gaming modules</li>
-      <li>🧠 Designed for long-term value and ecosystem growth</li>
-    </ul>
-  </section>
+      <div class="text-sm text-gray-300 mb-2">Wallet Address:</div>
+      <div id="wallet-address" class="text-yellow-400 font-mono break-words mb-4">Not connected</div>
 
-  <section id="roadmap" class="card">
-    <h2>Roadmap</h2>
-    <ul>
-      <li>✅ Token Launch</li>
-      <li>🔄 Swap Development</li>
-      <li>🧠 Lending Logic Integration</li>
-      <li>🎮 Game Module Activation</li>
-      <li>🌐 Full dApp Deployment</li>
-    </ul>
-  </section>
+      <div class="text-sm text-gray-300 mb-2">$CZL Balance:</div>
+      <div id="czl-balance" class="text-yellow-400 text-2xl font-bold mb-6">--</div>
 
-  <section id="invest" class="card">
-    <h2>Why Invest in CZLEGACY</h2>
-    <ul>
-      <li>🚀 Early-stage entry into a multifunctional DeFi ecosystem</li>
-      <li>💎 Deflationary tokenomics designed to increase scarcity and value</li>
-      <li>📈 Real utility across trading, lending, and gaming</li>
-      <li>🧠 Strategic roadmap with clear milestones</li>
-      <li>🌍 Community-driven governance and viral branding</li>
-    </ul>
-  </section>
+      <div class="bg-gray-700 p-4 rounded-lg">
+        <h2 class="text-xl font-semibold text-yellow-300 mb-2">Swap Simulation</h2>
+        <p class="text-gray-200">1 SOL → <span class="text-yellow-400 font-bold">500 CZL</span></p>
+        <p class="text-xs text-gray-400 mt-2">* This is a visual simulation. No transaction is executed.</p>
+      </div>
+    </div>
 
-  <section id="solana" class="card">
-    <h2>Built on Solana</h2>
-    <ul>
-      <li>⚡ Ultra-fast transactions with low fees</li>
-      <li>🔒 Secure and scalable infrastructure</li>
-      <li>🧩 Seamless integration with Solana DeFi protocols</li>
-    </ul>
-  </section>
+    <div class="mt-10 text-center">
+      <h2 class="text-xl font-semibold text-yellow-300 mb-4">Join the CZLEGACY Community</h2>
+      <div class="space-y-2">
+        <a href="https://t.me/CZLEGAXY" target="_blank" class="block text-yellow-400 hover:underline">📢 Telegram: @CZLEGAXY</a>
+        <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank" class="block text-yellow-400 hover:underline">📰 Manifesto on Medium</a>
+        <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank" class="block text-yellow-400 hover:underline">💰 Buy $CZL on Pump.fun</a>
+      </div>
+    </div>
 
-  <section id="burn" class="card">
-    <h2>Burn & Rewards System</h2>
-    <ul>
-      <li>🔥 Real burn mechanics reduce supply with every key interaction</li>
-      <li>🎁 Rewards for holders, stakers, and active users</li>
-      <li>📊 Transparent tracking of burn events and reward distribution</li>
-    </ul>
-  </section>
+    <div class="mt-12 text-center text-sm text-gray-400 border-t border-gray-700 pt-6">
+      © 2025 CZLEGACY. Built on Solana. This demo runs on devnet and is for testing purposes only.
+    </div>
+  </div>
 
-  <section id="gaming" class="card">
-    <h2>Gaming Culture</h2>
-    <ul>
-      <li>🎮 Play-to-earn mechanics integrated into the CZLEGACY dApp</li>
-      <li>📣 Viral campaigns and seasonal events</li>
-      <li>👑 Clan-based competition and NFT integration (coming soon)</li>
-    </ul>
-  </section>
-
-  <section id="czl-dapp" class="card">
-    <h2>Launch CZLEGACY dApp</h2>
-    <p>Connect your wallet, view your $CZL balance, and explore the future of DeFi on Solana.</p>
-    <img src="URL_DEL_LOGO_DORADO" alt="CZLEGACY Logo" class="logo" />
-    <div id="wallet-status">🃏 Wallet not connected</div>
-    <div id="czl-balance">💰 $CZL Balance: --</div>
-    <div id="swap-simulation">🔁 Swap Simulation: 1 SOL → 500 CZL</div>
-    <button onclick="connectWallet()" class="dapp-button">Connect Phantom Wallet</button>
-  </section>
-
-  <section id="community" class="card">
-    <h2>Join the Community</h2>
-    <ul>
-      <li>📢 Telegram: <a href="https://t.me/CZLEGAXY" target="_blank">https://t.me/CZLEGAXY</a></li>
-      <li>📰 Manifesto: <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read on Medium</a></li>
-      <li>💰 Buy $CZL: <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Pump.fun</a></li>
-    </ul>
-  </section>
-
-  <div class="cta">
-    Be Part of the Legacy<br />
-    <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Buy $CZL</a> | 
-    <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read Manifesto</a> |
+</body>
+</html>
