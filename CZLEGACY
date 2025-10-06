@@ -1,179 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CZLEGACY — Gold 3.0</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CZLEGACY | Gold 3.0</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #000, #111);
-      color: #f5f5f5;
-      overflow-x: hidden;
+      background: linear-gradient(to bottom, #f5e8c7, #d4af37);
+      color: #1a1a1a;
     }
     header {
-      position: relative;
-      background: linear-gradient(to right, #d4af37, #b8860b);
-      padding: 80px 20px;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 20px;
       text-align: center;
-      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    header img.logo-img {
-      max-width: 180px;
-      margin-bottom: 20px;
-      animation: glow 2s infinite alternate;
-    }
-    header h1 {
-      font-size: 3.5em;
-      margin: 0;
-      color: #000;
-    }
-    header h2 {
-      font-size: 1.5em;
-      margin-top: 10px;
-      color: #222;
-    }
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 5px gold); }
-      to { filter: drop-shadow(0 0 20px #fff700); }
-    }
-    .gold-bar {
-      position: absolute;
-      width: 60px;
-      height: 20px;
-      background: gold;
-      border-radius: 4px;
-      animation: floatGold 6s infinite linear;
-    }
-    .gold-bar:nth-child(1) { top: 20px; left: 10%; animation-delay: 0s; }
-    .gold-bar:nth-child(2) { top: 60px; left: 80%; animation-delay: 2s; }
-    .gold-bar:nth-child(3) { top: 100px; left: 50%; animation-delay: 4s; }
-    @keyframes floatGold {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      50% { transform: translateY(-30px) rotate(15deg); opacity: 0.8; }
-      100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    nav a {
+      margin: 0 15px;
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: bold;
     }
     section {
       padding: 60px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
-    section h3 {
+    h2 {
       font-size: 2em;
       margin-bottom: 20px;
-      color: #d4af37;
+      color: #1a1a1a;
     }
-    section p {
-      font-size: 1.2em;
-      line-height: 1.6em;
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    .identity-img {
-      max-width: 300px;
+    li {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 12px;
-      margin-top: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .links a {
-      background-color: #d4af37;
-      color: #000;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
+    .cta {
+      text-align: center;
+      padding: 40px;
+      background: #d4af37;
+      color: white;
       font-weight: bold;
-      transition: background 0.3s;
     }
-    .links a:hover {
-      background-color: #b8860b;
-    }
-    .chart {
-      width: 100%;
-      height: 200px;
-      margin-top: 40px;
+    .cta a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
     }
     footer {
-      background-color: #111;
-      padding: 30px 20px;
+      background-color: #1a1a1a;
+      color: #ccc;
       text-align: center;
+      padding: 20px;
       font-size: 0.9em;
-      color: #777;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="gold-bar"></div>
-    <div class="gold-bar"></div>
-    <div class="gold-bar"></div>
-    <img src="czl-logo.png" alt="CZLEGACY Logo" class="logo-img">
-    <h1>CZLEGACY</h1>
-    <h2>Gold 3.0 — $CZL</h2>
+    <nav>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#invest">Why Invest</a>
+      <a href="#solana">Built on Solana</a>
+      <a href="#burn">Burn & Rewards</a>
+      <a href="#gaming">Gaming Culture</a>
+      <a href="#community">Community</a>
+    </nav>
   </header>
 
-  <section>
-    <h3>About the Project</h3>
-    <p>
-      CZLEGACY is a digital monument forged on Solana — a tribute to the chaos, brilliance, and rebellion of crypto culture. Born from the ashes of centralized collapse and the rise of meme warfare, CZLEGACY is not just a brand. It’s a movement. A declaration. A weaponized aesthetic of financial resistance.
-    </p>
-    <p>
-      Gold 3.0 is more than symbolism — it’s a tactical upgrade to legacy thinking. We don’t ask permission. We build, we meme, we dominate. Every pixel, every post, every drop of code is designed to echo the spirit of decentralized defiance.
-    </p>
+  <section id="ecosystem" class="card">
+    <h2>CZLEGACY Ecosystem</h2>
+    <ul>
+      <li>🔁 Swap Protocol – Fast, secure, decentralized trading powered by Solana</li>
+      <li>💸 Lending Platform – Unlock liquidity without selling your assets</li>
+      <li>🎮 Gaming Module – Activate crypto culture through play-to-earn and viral mechanics</li>
+    </ul>
   </section>
 
-  <section>
-    <h3>Identity</h3>
-    <img src="czl-founder.png" alt="Founder CZLEGACY" class="identity-img">
-    <p>
-      CZLEGACY is not just a brand — it's a persona. A tactical force. A visual rebellion. This is the face of Gold 3.0.
-    </p>
+  <section id="tokenomics" class="card">
+    <h2>$CZL Tokenomics</h2>
+    <ul>
+      <li>🪙 Deflationary design through real burn mechanics</li>
+      <li>🎁 Reward system for holders and active participants</li>
+      <li>🗳️ Governance access and exclusive platform benefits</li>
+      <li>🔄 Utility across swap, lending, and gaming modules</li>
+      <li>🧠 Designed for long-term value and ecosystem growth</li>
+    </ul>
   </section>
 
-  <section>
-    <h3>Live Token Momentum</h3>
-    <svg class="chart" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polyline fill="none" stroke="gold" stroke-width="2"
-        points="0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5">
-        <animate attributeName="points" dur="4s" repeatCount="indefinite"
-          values="0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5;
-                  0,85 10,75 20,65 30,55 40,45 50,35 60,25 70,15 80,10 90,5 100,0;
-                  0,90 10,80 20,70 30,60 40,50 50,40 60,30 70,20 80,15 90,10 100,5"/>
-      </polyline>
-    </svg>
-    <p>
-      $CZL is not just a token — it's a signal. A pulse. A rising force. This chart reflects the unstoppable momentum of meme-backed finance.
-    </p>
+  <section id="roadmap" class="card">
+    <h2>Roadmap</h2>
+    <ul>
+      <li>✅ Token Launch</li>
+      <li>🔄 Swap Development</li>
+      <li>🧠 Lending Logic Integration</li>
+      <li>🎮 Game Module Activation</li>
+      <li>🌐 Full dApp Deployment</li>
+    </ul>
   </section>
 
-  <section>
-    <h3>Project Resources</h3>
-    <div class="links">
-      <a href="https://t.me/CZLEGAXY" target="_blank">Telegram</a>
-      <a href="https://x.com/CZLEGACYCZL" target="_blank">X (Twitter)</a>
-      <a href="https://www.linkedin.com/in/czlgalaxy-czl-b39661387" target="_blank">LinkedIn</a>
-      <a href="https://medium.com/@saturnyx80/czlgalaxy-b34576f0b0c9" target="_blank">Litepaper</a>
-      <a href="https://github.com/czlegacy/czlegacy.github.io" target="_blank">GitHub</a>
-    </div>
+  <section id="invest" class="card">
+    <h2>Why Invest in CZLEGACY</h2>
+    <ul>
+      <li>🚀 Early-stage entry into a multifunctional DeFi ecosystem</li>
+      <li>💎 Deflationary tokenomics designed to increase scarcity and value</li>
+      <li>📈 Real utility across trading, lending, and gaming</li>
+      <li>🧠 Strategic roadmap with clear milestones</li>
+      <li>🌍 Community-driven governance and viral branding</li>
+    </ul>
   </section>
 
-  <section>
-    <h3>Vision</h3>
-    <p>
-      We envision a world where meme culture merges with financial sovereignty. Where satire becomes strategy. Where CZLEGACY becomes the gold standard of crypto storytelling — not through whitepapers, but through viral impact, visual dominance, and community firepower.
-    </p>
-    <p>
-      This is not a product. It’s a legacy. And it’s just getting started.
-    </p>
+  <section id="solana" class="card">
+    <h2>Built on Solana</h2>
+    <ul>
+      <li>⚡ Ultra-fast transactions with low fees</li>
+      <li>🔒 Secure and scalable infrastructure</li>
+      <li>🧩 Seamless integration with Solana DeFi protocols</li>
+    </ul>
   </section>
+
+  <section id="burn" class="card">
+    <h2>Burn & Rewards System</h2>
+    <ul>
+      <li>🔥 Real burn mechanics reduce supply with every key interaction</li>
+      <li>🎁 Rewards for holders, stakers, and active users</li>
+      <li>📊 Transparent tracking of burn events and reward distribution</li>
+    </ul>
+  </section>
+
+  <section id="gaming" class="card">
+    <h2>Gaming Culture</h2>
+    <ul>
+      <li>🎮 Play-to-earn mechanics integrated into the CZLEGACY dApp</li>
+      <li>📣 Viral campaigns and seasonal events</li>
+      <li>👑 Clan-based competition and NFT integration (coming soon)</li>
+    </ul>
+  </section>
+
+  <section id="community" class="card">
+    <h2>Join the Community</h2>
+    <ul>
+      <li>📢 Telegram: <a href="https://t.me/CZLEGAXY" target="_blank">https://t.me/CZLEGAXY</a></li>
+      <li>📰 Manifesto: <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read on Medium</a></li>
+      <li>💰 Buy $CZL: <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Pump.fun</a></li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    Be Part of the Legacy<br />
+    <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Buy $CZL</a> | 
+    <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read Manifesto</a> | 
+    <a href="https://t.me/CZLEGAXY" target="_blank">Join Telegram</a>
+  </div>
 
   <footer>
-    Powered by GitHub Pages · Forged on Solana · Designed for viral rebellion
+    © 2025 CZLEGACY. Built on Solana. All rights reserved.  
+    This site is for informational purposes only and does not constitute financial advice.
   </footer>
 
 </body>
