@@ -79,11 +79,16 @@
       border-radius: 10px;
       text-decoration: none;
       margin-top: 20px;
+      cursor: pointer;
     }
     .logo {
       max-width: 200px;
       margin: 20px auto;
       display: block;
+    }
+    #wallet-status, #czl-balance, #swap-simulation {
+      font-size: 1.1em;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -176,7 +181,10 @@
     <h2>Launch CZLEGACY dApp</h2>
     <p>Connect your wallet, view your $CZL balance, and explore the future of DeFi on Solana.</p>
     <img src="URL_DEL_LOGO_DORADO" alt="CZLEGACY Logo" class="logo" />
-    <a href="https://czlegacy-dapp.netlify.app" target="_blank" class="dapp-button">Launch CZLEGACY dApp</a>
+    <div id="wallet-status">🃏 Wallet not connected</div>
+    <div id="czl-balance">💰 $CZL Balance: --</div>
+    <div id="swap-simulation">🔁 Swap Simulation: 1 SOL → 500 CZL</div>
+    <button onclick="connectWallet()" class="dapp-button">Connect Phantom Wallet</button>
   </section>
 
   <section id="community" class="card">
@@ -191,14 +199,4 @@
   <div class="cta">
     Be Part of the Legacy<br />
     <a href="https://pump.fun/coin/5yELCTxfjrkDRKFDUEuLwqueHdT6DV3yW8SkRWMHpump" target="_blank">Buy $CZL</a> | 
-    <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read Manifesto</a> | 
-    <a href="https://t.me/CZLEGAXY" target="_blank">Join Telegram</a>
-  </div>
-
-  <footer>
-    © 2025 CZLEGACY. Built on Solana. All rights reserved.  
-    This site is for informational purposes only and does not constitute financial advice.
-  </footer>
-
-</body>
-</html>
+    <a href="https://medium.com/@czlgalaxy/gold-3-0-the-financial-rebirth-of-czlegacy-czl-24931d65c9f9" target="_blank">Read Manifesto</a> |
